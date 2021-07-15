@@ -1,21 +1,15 @@
 import React, { useRef } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  TextInput,
-  View,
-  Dimensions,
-} from "react-native";
+import { StyleSheet, TextInput, View, Dimensions, Alert } from "react-native";
 
-const screenPadding = 30;
+const screenPadding = 60;
 const inlinePadding = 5;
 const circleDiameter =
   (Dimensions.get("window").width - screenPadding * 2 - inlinePadding * 5) / 6;
-const letterSpace = (Dimensions.get("window").width - screenPadding * 2) / 7;
+const letterSpace = circleDiameter - inlinePadding;
+// (Dimensions.get("window").width - screenPadding * 2) / 12 + inlinePadding * 2;
 
-const UselessTextInput = () => {
+const SixDigitInput = () => {
   const [text, onChangeText] = React.useState("");
-  const [number, onChangeNumber] = React.useState(null);
 
   const ref = useRef(null);
 
@@ -40,7 +34,6 @@ const UselessTextInput = () => {
           style={styles.input}
           maxLength={6}
           numberOfLines={1}
-          textBreakStrategy={"balanced"}
           dataDetectorTypes={"none"}
           autoCompleteType={"off"}
           underlineColorAndroid="transparent"
@@ -50,7 +43,7 @@ const UselessTextInput = () => {
           autoCapitalize="none"
           secureTextEntry={false}
           textAlign={"left"}
-          onBlur={() => console.log("blured")}
+          onBlur={() => Alert.alert("blured")}
           textContentType={"oneTimeCode"}
         />
       </View>
@@ -60,7 +53,9 @@ const UselessTextInput = () => {
 
 const styles = StyleSheet.create({
   parentWrapper: {
+    flex: 1,
     justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: screenPadding,
   },
   placeHolderWrapper: {
@@ -80,7 +75,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     bottom: 0,
-    left: 0,
+    left: 5,
     right: 0,
     height: circleDiameter,
     width: Dimensions.get("window").width,
@@ -91,4 +86,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UselessTextInput;
+export default SixDigitInput;
