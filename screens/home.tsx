@@ -19,6 +19,10 @@ export default function Home() {
           title="other modal types"
           onPress={() => navigation.push("OtherModals")}
         />
+        <Button
+          title="SixDigitsScreen"
+          onPress={() => navigation.push("SixDigitsScreen")}
+        />
       </View>
     </View>
   );
