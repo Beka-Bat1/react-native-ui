@@ -48,6 +48,7 @@ const PersonDetailForm = (props: any) => {
           .slice()
           .map((el, index) => (
             <TextInput
+              key={index}
               value={text}
               onChangeText={onChangeText}
               style={styles.input}

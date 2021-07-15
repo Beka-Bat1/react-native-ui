@@ -54,9 +54,9 @@ export default () => {
           </Text>
           <Separator />
 
-          {modalContent.modalButtons.map((modalButton) => (
+          {modalContent.modalButtons.map((modalButton, index) => (
             <>
-              <TouchableOpacity onPress={modalButton.onPress}>
+              <TouchableOpacity onPress={modalButton.onPress} key={index}>
                 <Text style={styles.textStyle}>{modalButton.title}</Text>
               </TouchableOpacity>
               <Separator />
