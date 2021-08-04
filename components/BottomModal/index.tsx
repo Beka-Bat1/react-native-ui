@@ -1,19 +1,10 @@
 import React from "react";
-import {
-  Dimensions,
-  TouchableOpacity,
-  Alert,
-  Text,
-  View,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { Dimensions, TouchableOpacity, Alert, Text } from "react-native";
 import Modal from "react-native-modal";
 import { getStyleObj } from "./styles";
 import Separator from "../Separator/Separator";
-//TOFINDOUT customBackdrop does not work properly
 
 interface Props {
-  //// TOASK
   modalToggler: any;
   isModalOpen: boolean;
 }
@@ -43,33 +34,23 @@ const modalContent = {
 };
 
 const BottomHalfModal = (props: Props) => {
-  //// TOASK static javascript?
   const styles = getStyleObj();
-  const deviceHeight: any = Dimensions.get("window").height;
-  // Platform.OS === "ios"
-  //   ? Dimensions.get("window").height
-  //   : require("react-native-extra-dimensions-android").get(
-  //       "REAL_WINDOW_HEIGHT"
-  //     );
-
+  const { height, width } = Dimensions.get("window");
   const { modalToggler } = props;
 
-  //// TODO customBackdrop={<View style={{flex: 1}} />} instead of TouchableWithoutFeedback
-
   return (
-    <TouchableWithoutFeedback style={styles.background}>
+    <>
       <Modal
         isVisible={props.isModalOpen}
         onBackdropPress={modalToggler}
-        onSwipeComplete={modalToggler}
         swipeDirection={["up", "down"]}
-        backdropOpacity={0.6}
+        backdropOpacity={0.7}
         hasBackdrop={true}
         useNativeDriver={true}
-        deviceHeight={deviceHeight}
+        deviceHeight={height}
         style={styles.modalContent}
       >
-        <Text style={{ ...styles.textStyle, ...styles.modalContentHeader }}>
+        <Text style={[styles.textStyle, styles.modalContentHeader]}>
           {modalContent.modalHeader}
         </Text>
         <Separator />
@@ -79,17 +60,24 @@ const BottomHalfModal = (props: Props) => {
             <TouchableOpacity onPress={modalButton.onPress} key={index}>
               <Text style={styles.textStyle}>{modalButton.title}</Text>
             </TouchableOpacity>
-            <Separator />
+            {index < modalContent.modalButtons.length - 1 && <Separator />}
           </>
         ))}
+
         <TouchableOpacity
           onPress={() => props.modalToggler()}
-          style={{ flex: 1 }}
+          style={{
+            width: width * 0.9,
+            borderRadius: 15,
+            backgroundColor: "#F8F8F8D1",
+            position: "absolute",
+            bottom: -80,
+          }}
         >
           <Text style={styles.textStyle}>Cancel</Text>
         </TouchableOpacity>
       </Modal>
-    </TouchableWithoutFeedback>
+    </>
   );
 };
 

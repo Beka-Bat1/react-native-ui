@@ -1,12 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  Alert,
-} from "react-native";
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { StackActions } from "@react-navigation/native";
 import Separator from "../../components/Separator/Separator";
 import { getStyleObj } from "./styles";
@@ -41,30 +35,27 @@ export default () => {
   const closeModal = () => {
     navigation.dispatch(StackActions.pop());
   };
+
   return (
     <TouchableOpacity style={styles.background} onPress={closeModal}>
-      <TouchableWithoutFeedback
-        onPress={(e) => {
-          e.preventDefault();
-        }}
+      <View style={styles.modalContent}>
+        <Text style={[styles.textStyle, styles.modalContentHeader]}>
+          {modalContent.modalHeader}
+        </Text>
+        <Separator />
+        {modalContent.modalButtons.map((modalButton, index) => (
+          <>
+            <TouchableOpacity onPress={modalButton.onPress} key={index}>
+              <Text style={styles.textStyle}>{modalButton.title}</Text>
+            </TouchableOpacity>
+            {index < modalContent.modalButtons.length - 1 && <Separator />}
+          </>
+        ))}
+      </View>
+      <TouchableOpacity
+        onPress={closeModal}
+        style={[styles.modalContent, { backgroundColor: "white" }]}
       >
-        <View style={styles.modalContent}>
-          <Text style={(styles.modalContentHeader, styles.textStyle)}>
-            {modalContent.modalHeader}
-          </Text>
-          <Separator />
-
-          {modalContent.modalButtons.map((modalButton, index) => (
-            <>
-              <TouchableOpacity onPress={modalButton.onPress} key={index}>
-                <Text style={styles.textStyle}>{modalButton.title}</Text>
-              </TouchableOpacity>
-              <Separator />
-            </>
-          ))}
-        </View>
-      </TouchableWithoutFeedback>
-      <TouchableOpacity onPress={closeModal} style={styles.modalContent}>
         <Text style={styles.textStyle}>Cancel</Text>
       </TouchableOpacity>
     </TouchableOpacity>

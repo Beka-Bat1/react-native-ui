@@ -10,7 +10,7 @@ export default Separator;
 const styles = StyleSheet.create({
   separator: {
     marginVertical: 8,
-    borderBottomColor: "#737373",
+    borderBottomColor: "#3F3F3F",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });

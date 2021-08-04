@@ -6,14 +6,13 @@ export const getStyleObj = () => {
   return StyleSheet.create({
     background: {
       flex: 1,
-      backgroundColor: "gray",
       alignItems: "center",
       justifyContent: "flex-end",
     },
     modalContent: {
-      width: "80%",
+      width: "90%",
       padding: 15,
-      backgroundColor: "white",
+      backgroundColor: "#F8F8F8D1",
       borderRadius: 15,
       marginBottom: 20,
       color: colors.blue,
@@ -23,20 +22,28 @@ export const getStyleObj = () => {
       // borderBottomLeftRadius: 15,
     },
     cancelButton: {
-      width: "80%",
+      width: "90%",
       backgroundColor: "red",
       borderRadius: 15,
       color: colors.blue,
     },
+    // TOTAKE
     modalContentHeader: {
-      color: colors.gray1,
-      marginVertical: 15,
+      color: "#8F8F8F",
+      marginTop: 16,
+      marginBottom: 11,
+      marginHorizontal: 37,
+      fontSize: 13,
+      lineHeight: 18,
     },
     // TOASK text style from container or text
     textStyle: {
       textAlign: "center",
-      color: colors.blue,
-      fontSize: 22,
+      color: "#007AFF",
+      fontSize: 20,
+      lineHeight: 24,
+      marginHorizontal: 10,
+      marginVertical: 13,
     },
   });
 };

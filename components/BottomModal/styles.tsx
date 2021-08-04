@@ -4,22 +4,20 @@ import colors from "../../constants/colors";
 export const getStyleObj = () => {
   return StyleSheet.create({
     background: {
-      flex: 1,
       flexDirection: "column",
-      backgroundColor: "red",
-      alignItems: "flex-end",
       justifyContent: "flex-end",
     },
     /// TOASK marginTop Best Practices
     modalContent: {
-      marginTop: Dimensions.get("window").height * 0.55,
+      flex: 0.4,
+      position: "absolute",
+      bottom: 78,
       padding: 15,
-      backgroundColor: "white",
+      backgroundColor: "#F8F8F8D1",
       borderRadius: 15,
     },
     cancelButton: {
-      width: "80%",
-      backgroundColor: "red",
+      width: "100%",
       borderRadius: 15,
       color: colors.blue,
     },
@@ -30,8 +28,10 @@ export const getStyleObj = () => {
     // TOASK text style from container or text
     textStyle: {
       textAlign: "center",
-      color: colors.blue,
-      fontSize: 22,
+      color: "#007AFF",
+      fontSize: 20,
+      lineHeight: 24,
+      marginVertical: 16,
     },
   });
 };

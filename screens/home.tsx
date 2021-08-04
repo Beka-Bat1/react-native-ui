@@ -10,10 +10,6 @@ export default function Home() {
       <Text>Hello world !</Text>
 
       <View style={styles.verticalContainer}>
-        <Button
-          title="navigate to modalScreen"
-          onPress={() => navigation.push("NavigationModal")}
-        />
         <Button title="six Digit" onPress={() => navigation.push("SixDigit")} />
         <Button
           title="other modal types"
@@ -22,6 +18,14 @@ export default function Home() {
         <Button
           title="SixDigitsScreen"
           onPress={() => navigation.push("SixDigitsScreen")}
+        />
+        <Button
+          title="CameraScreen"
+          onPress={() => navigation.push("CameraScreen")}
+        />
+        <Button
+          title="AnimationsScreen"
+          onPress={() => navigation.push("AnimationsScreen")}
         />
       </View>
     </View>
